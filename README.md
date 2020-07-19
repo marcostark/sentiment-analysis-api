@@ -1,6 +1,6 @@
-# Flask Boilerplate for Machine Learning
+# Sentiment Analysis API
 
-Flask template for machine learning project microservice
+### Api for sentiment analysis using flask
 
 - Create container
     `docker-compose up -d`

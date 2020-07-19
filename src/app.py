@@ -18,7 +18,7 @@ def predict():
 
 
 def load_model():
-    model = pickle.load(open('utils/model.pkl', 'rb'))
+    model = pickle.load(open('src/utils/model.pkl', 'rb'))
     return model
 
 
