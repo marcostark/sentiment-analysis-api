@@ -2,7 +2,32 @@ from flask import Flask, request, jsonify
 import os
 import pickle
 
+from nltk.stem.snowball import PorterStemmer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from unpickler import CustomUnpickler
+
 app = Flask(__name__)
+
+
+# was used as a tokenizer when creating the TFIDF object
+def tokenizer_porter(text):
+    """
+    Split the comment text into a single word and extract the stem,
+    :param text:
+    :return:
+    """
+    porter = PorterStemmer()
+    return [porter.stem(word) for word in text.split()]
+
+
+with open('vectorizer.pkl', 'rb') as f:
+    unpickler = CustomUnpickler(f)
+    vectorizer = TfidfVectorizer()
+    vectorizer = unpickler.load()
+
+with open('sentiment_analysis_model.pkl', 'rb') as f:
+    unpickler = CustomUnpickler(f)
+    model = unpickler.load()
 
 
 @app.route('/')
