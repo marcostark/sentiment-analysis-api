@@ -20,19 +20,19 @@ def tokenizer_porter(text):
     return [porter.stem(word) for word in text.split()]
 
 
-with open('vectorizer.pkl', 'rb') as f:
+with open('utils/vectorizer.pkl', 'rb') as f:
     unpickler = CustomUnpickler(f)
     vectorizer = TfidfVectorizer()
     vectorizer = unpickler.load()
 
-with open('sentiment_analysis_model.pkl', 'rb') as f:
+with open('utils/sentiment_analysis_model.pkl', 'rb') as f:
     unpickler = CustomUnpickler(f)
     model = unpickler.load()
 
 
 @app.route('/')
 def initial():
-    return "Machine Learning API -> ON!", 200
+    return "Analsys Sentiment API -> ON!", 200
 
 
 @app.route('/predict', methods=['POST'])
@@ -42,9 +42,15 @@ def predict():
     return jsonify(data)
 
 
-def load_model():
-    model = pickle.load(open('src/utils/model.pkl', 'rb'))
-    return model
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json(force=True)
+    text = list(data.values())
+    review = vectorizer.transform([str(text[0])])
+    prediction = model.predict(review)
+    result = 'Negative' if prediction == 0 else 'Positive'
+    output = {'Prediction': result}
+    return jsonify(output)
 
 
 if __name__ == '__main__':
