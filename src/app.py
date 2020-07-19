@@ -4,7 +4,7 @@ import pickle
 
 from nltk.stem.snowball import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from unpickler import CustomUnpickler
+from utils.unpickler import CustomUnpickler
 
 app = Flask(__name__)
 
@@ -33,13 +33,6 @@ with open('utils/sentiment_analysis_model.pkl', 'rb') as f:
 @app.route('/')
 def initial():
     return "Analsys Sentiment API -> ON!", 200
-
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    """Performs its prediction and returns the answer to the user."""
-    data = request.get_json(force=True)
-    return jsonify(data)
 
 
 @app.route('/predict', methods=['POST'])
