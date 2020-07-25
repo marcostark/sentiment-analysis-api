@@ -10,7 +10,7 @@
 - Testing
     `curl -X POST -H "Content-Type: application/json" \
      -d '{"text": "Text Here"}' \
-     http://127.0.0.1:5000/predict`
+     http://localhost:5000/predict`
      
 ### If you wish you can run the application in a virtual env
 
