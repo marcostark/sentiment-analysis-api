@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify
 import os
-import pickle
 
 from nltk.stem.snowball import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from utils.unpickler import CustomUnpickler
 
 app = Flask(__name__)
@@ -22,7 +20,6 @@ def tokenizer_porter(text):
 
 with open('utils/vectorizer.pkl', 'rb') as f:
     unpickler = CustomUnpickler(f)
-    vectorizer = TfidfVectorizer()
     vectorizer = unpickler.load()
 
 with open('utils/sentiment_analysis_model.pkl', 'rb') as f:
