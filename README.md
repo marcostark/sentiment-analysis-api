@@ -1,11 +1,18 @@
-# Flask Boilerplate for Machine Learning
+# Sentiment Analysis API
 
-Flask template for machine learning project microservice
+### Api for sentiment analysis using flask
 
-- Create container
+- Create image:
+    `docker-compose build`
+- Containers running
     `docker-compose up -d`
 
 - Testing
     `curl -X POST -H "Content-Type: application/json" \
      -d '{"text": "Text Here"}' \
-     http://127.0.0.1:5000/predict`
+     http://localhost:5000/predict`
+     
+### If you wish you can run the application in a virtual env
+
+- `export FLASK_APP=app.py`
+- `flask run`

@@ -2,10 +2,11 @@ version: '3'
 
 services:
    web:
+      restart: always
+      build: ./web
       container_name: flask-machine-learning-api
       hostname: flask-machine-learning-api
-      build: .
       ports:
          - "5000:5000"
       volumes:
-         - .:/src
+         - .:/web
