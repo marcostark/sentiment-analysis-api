@@ -2,7 +2,9 @@
 
 ### Api for sentiment analysis using flask
 
-- Create container
+- Create image:
+    `docker-compose build`
+- Containers running
     `docker-compose up -d`
 
 - Testing
