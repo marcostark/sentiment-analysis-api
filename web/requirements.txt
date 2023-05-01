@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask==2.3.2
 nltk==3.5
 numpy==1.19.0
 PorterStemmer==0.5
